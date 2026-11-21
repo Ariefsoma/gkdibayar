@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resi J&amp;T 100x120mm &amp; Amplop Biru Langit — Untuk Andriyansah</title>
+
+  <!-- Memuat Google Fonts (Inter & Caveat untuk catatan tangan manis) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Memuat Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            hand: ['Caveat', 'cursive'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --dance-speed: 1.05s;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .font-hand {
+      font-family: 'Caveat', cursive;
+    }
+
+    /* =========================================================================
+       1. GAYA RESI TERMAL J&T EXPRESS UKURAN 100mm x 120mm
+       ========================================================================= */
+    .resi-jnt-100x120 {
+      width: 100%;
+      max-width: 378px; /* Proporsional 100mm x 120mm (~100:120 = 5:6) */
+      min-height: 454px;
+      background: #ffffff;
+      color: #0f172a;
+      border: 2px solid #1e293b;
+      border-radius: 10px;
+      padding: 10px 12px;
+      box-shadow: 0 14px 32px -10px rgba(15, 23, 42, 0.22);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      user-select: none;
+    }
+
+    .jnt-barcode-lines {
+      height: 34px;
+      background: repeating-linear-gradient(
+        90deg,
+        #0f172a 0px,
+        #0f172a 2px,
+        #ffffff 2px,
+        #ffffff 4px,
+        #0f172a 4px,
+        #0f172a 7px,
+        #ffffff 7px,
+        #ffffff 8.5px,
+        #0f172a 8.5px,
+        #0f172a 10px,
+        #ffffff 10px,
+        #ffffff 13px
+      );
+      border-radius: 2px;
+    }
+
+    /* Animasi laser scan saat resi diklik atau dipindai */
+    .scan-laser-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #ef4444, #38bdf8, #ef4444, transparent);
+      box-shadow: 0 0 14px rgba(239, 68, 68, 0.9), 0 0 22px rgba(56, 189, 248, 0.85);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 30;
+    }
+
+    .resi-scanning .scan-laser-line {
+      opacity: 1;
+      animation: laserSweep 1.15s ease-in-out forwards;
+    }
+
+    @keyframes laserSweep {
+      0% {
+        top: 6%;
+        opacity: 0.2;
+      }
+      15% {
+        opacity: 1;
+      }
+      85% {
+        opacity: 1;
+      }
+      100% {
+        top: 94%;
+        opacity: 0;
+      }
+    }
+
+    /* Pengaturan cetak thermal 100mm x 120mm */
+    @page {
+      size: 100mm 120mm;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      #receiptView {
+        padding: 0 !important;
+        margin: 0 !important;
+        min-height: auto !important;
+        display: block !important;
+      }
+      .resi-jnt-100x120 {
+        width: 100mm !important;
+        max-width: 100mm !important;
+        height: 120mm !important;
+        min-height: 120mm !important;
+        border: 1.5px solid #000000 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        page-break-after: always;
+      }
+    }
+
+    /* =========================================================================
+       2. LATAR LANGIT MALAM ROMANTIS: SAKURA, BINTANG, LOVE & BULAN SABIT
+       ========================================================================= */
+    .night-sky-backdrop {
+      background:
+        radial-gradient(circle at 82% 16%, rgba(125, 211, 252, 0.24) 0%, transparent 34%),
+        radial-gradient(circle at 20% 28%, rgba(244, 114, 182, 0.16) 0%, transparent 40%),
+        linear-gradient(180deg, #06132b 0%, #0b2447 46%, #133b69 82%, #1d4ed8 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Bulan sabit bercahaya & berkelap-kelip */
+    .crescent-moon-wrapper {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      width: 92px;
+      height: 92px;
+      pointer-events: none;
+      z-index: 2;
+      animation: moonTwinkleGlow 3.6s ease-in-out infinite;
+    }
+
+    @keyframes moonTwinkleGlow {
+      0%, 100% {
+        transform: scale(1) rotate(-6deg);
+        filter: drop-shadow(0 0 10px rgba(254, 240, 138, 0.65)) drop-shadow(0 0 24px rgba(125, 211, 252, 0.45));
+      }
+      50% {
+        transform: scale(1.07) rotate(3deg);
+        filter: drop-shadow(0 0 22px rgba(254, 240, 138, 0.98)) drop-shadow(0 0 38px rgba(186, 230, 253, 0.8));
+      }
+    }
+
+    /* Bintang berkelip */
+    .twinkling-star {
+      position: absolute;
+      border-radius: 9999px;
+      background: #ffffff;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 16px rgba(186, 230, 253, 0.7);
+      pointer-events: none;
+      z-index: 2;
+      animation: starBlink var(--star-dur, 2.6s) ease-in-out infinite;
+      animation-delay: var(--star-delay, 0s);
+    }
+
+    @keyframes starBlink {
+      0%, 100% {
+        opacity: 0.22;
+        transform: scale(0.72);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.35);
+      }
+    }
+
+    /* Bunga sakura bertaburan jatuh lembut */
+    .sakura-petal {
+      position: absolute;
+      top: -28px;
+      width: var(--petal-size, 14px);
+      height: calc(var(--petal-size, 14px) * 0.75);
+      background: radial-gradient(circle at 30% 30%, #ffe4e6 0%, #fbcfe8 55%, #f472b6 100%);
+      border-radius: 100% 0% 100% 15% / 100% 15% 85% 0%;
+      box-shadow: 0 0 8px rgba(244, 114, 182, 0.45);
+      pointer-events: none;
+      z-index: 3;
+      animation: sakuraFall var(--fall-dur, 9s) linear infinite;
+      animation-delay: var(--fall-delay, 0s);
+    }
+
+    @keyframes sakuraFall {
+      0% {
+        transform: translate3d(0, -24px, 0) rotate(0deg);
+        opacity: 0;
+      }
+      12% {
+        opacity: 0.95;
+      }
+      50% {
+        transform: translate3d(var(--sway, 34px), 48vh, 0) rotate(185deg);
+        opacity: 0.9;
+      }
+      88% {
+        opacity: 0.85;
+      }
+      100% {
+        transform: translate3d(calc(var(--sway, 34px) * -0.6), 104vh, 0) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Love / hati bertaburan naik melayang */
+    .floating-love {
+      position: absolute;
+      bottom: -24px;
+      color: #fda4af;
+      text-shadow: 0 0 10px rgba(244, 63, 94, 0.65);
+      pointer-events: none;
+      z-index: 3;
+      font-size: var(--heart-size, 16px);
+      animation: loveFloat var(--heart-dur, 7.5s) ease-in-out infinite;
+      animation-delay: var(--heart-delay, 0s);
+    }
+
+    @keyframes loveFloat {
+      0% {
+        transform: translate3d(0, 16px, 0) scale(0.75) rotate(-8deg);
+        opacity: 0;
+      }
+      18% {
+        opacity: 0.92;
+      }
+      50% {
+        transform: translate3d(var(--heart-sway, -22px), -45vh, 0) scale(1.08) rotate(10deg);
+        opacity: 0.88;
+      }
+      85% {
+        opacity: 0.65;
+      }
+      100% {
+        transform: translate3d(calc(var(--heart-sway, -22px) * 0.5), -96vh, 0) scale(0.95) rotate(-6deg);
+        opacity: 0;
+      }
+    }
+
+    /* =========================================================================
+       3. AMPLOP WARNA BIRU LANGIT INTERAKTIF
+       ========================================================================= */
+    .sky-envelope-card {
+      position: relative;
+      width: 100%;
+      max-width: 390px;
+      height: 248px;
+      margin: 0 auto;
+      cursor: pointer;
+      perspective: 1100px;
+      user-select: none;
+      z-index: 10;
+    }
+
+    .sky-envelope-body {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 18px;
+      background: linear-gradient(155deg, #7dd3fc 0%, #38bdf8 52%, #0284c7 100%);
+      border: 2px solid rgba(224, 242, 254, 0.85);
+      box-shadow:
+        0 20px 42px -8px rgba(2, 132, 199, 0.55),
+        0 0 28px rgba(125, 211, 252, 0.45),
+        inset 0 2px 3px rgba(255, 255, 255, 0.65);
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .sky-envelope-card:hover .sky-envelope-body {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow:
+        0 24px 48px -8px rgba(14, 165, 233, 0.68),
+        0 0 36px rgba(186, 230, 253, 0.65),
+        inset 0 2px 3px rgba(255, 255, 255, 0.8);
+    }
+
+    .envelope-bottom-pocket {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #38bdf8 0%, #0ea5e9 55%, #0369a1 100%);
+      clip-path: polygon(0 36%, 50% 68%, 100% 36%, 100% 100%, 0 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.45);
+      z-index: 4;
+    }
+
+    .envelope-side-folds {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(45deg, rgba(186, 230, 253, 0.42) 0%, transparent 52%),
+        linear-gradient(-45deg, rgba(2, 132, 199, 0.35) 0%, transparent 52%);
+      z-index: 3;
+    }
+
+    .envelope-top-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 58%;
+      background: linear-gradient(180deg, #bae6fd 0%, #7dd3fc 52%, #38bdf8 100%);
+      clip-path: polygon(0 0, 100% 0, 50% 96%);
+      transform-origin: top center;
+      transition: transform 0.75s cubic-bezier(0.34, 1.4, 0.64, 1);
+      z-index: 6;
+      filter: drop-shadow(0 5px 10px rgba(3, 105, 161, 0.35));
+    }
+
+    .envelope-is-open .envelope-top-flap {
+      transform: rotateX(172deg);
+      z-index: 1;
+    }
+
+    .envelope-heart-seal {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+      border: 3px solid #e0f2fe;
+      box-shadow: 0 8px 20px rgba(244, 63, 94, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 8;
+      transition: transform 0.45s ease, opacity 0.45s ease;
+    }
+
+    .envelope-is-open .envelope-heart-seal {
+      transform: translate(-50%, -50%) scale(0.75);
+      opacity: 0.25;
+    }
+
+    /* =========================================================================
+       4. SLIDE FOTO POLAROID BERANTAKAN TERSTRUKTUR & ANIMASI PANDA MENARI
+       ========================================================================= */
+    .polaroid-stack-stage {
+      position: relative;
+      min-height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Lapisan belakang polaroid yang memberi kesan berantakan tapi terstruktur */
+    .polaroid-ghost-back {
+      position: absolute;
+      width: 86%;
+      max-width: 340px;
+      height: 88%;
+      border-radius: 18px;
+      background: rgba(240, 249, 255, 0.72);
+      border: 1px solid rgba(186, 230, 253, 0.6);
+      box-shadow: 0 12px 26px rgba(2, 132, 199, 0.22);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .polaroid-ghost-1 {
+      transform: rotate(-7.5deg) translate(-14px, 8px);
+    }
+
+    .polaroid-ghost-2 {
+      transform: rotate(6.8deg) translate(15px, 12px);
+      background: rgba(255, 241, 242, 0.75);
+    }
+
+    .polaroid-active-card {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      max-width: 372px;
+      background: #fffdf9;
+      border-radius: 18px;
+      padding: 12px 12px 16px 12px;
+      box-shadow:
+        0 24px 50px -12px rgba(2, 132, 199, 0.45),
+        0 0 0 1px rgba(186, 230, 253, 0.85);
+      transform: rotate(var(--slide-tilt, -2deg)) translateY(var(--slide-y, 0px));
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    }
+
+    .polaroid-active-card:hover {
+      transform: rotate(0deg) translateY(-4px);
+    }
+
+    /* Selotip washi biru langit / sakura di atas polaroid */
+    .washi-tape {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-3deg);
+      width: 96px;
+      height: 22px;
+      background: linear-gradient(90deg, rgba(125, 211, 252, 0.85), rgba(249, 168, 212, 0.85));
+      border-left: 2px dashed rgba(255, 255, 255, 0.75);
+      border-right: 2px dashed rgba(255, 255, 255, 0.75);
+      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.16);
+      z-index: 10;
+    }
+
+    /* Kontainer panda menari di dalam setiap slide */
+    .slide-panda-box {
+      width: 112px;
+      height: 112px;
+      flex-shrink: 0;
+      position: relative;
+      --dance-speed: var(--slide-dance-speed, 1s);
+    }
+
+    .panda-shadow {
+      transform-origin: center;
+      animation: shadowPulse var(--dance-speed) ease-in-out infinite;
+    }
+
+    .panda-body-group {
+      transform-origin: 180px 265px;
+      animation: bodyBounce var(--dance-speed) ease-in-out infinite;
+    }
+
+    .panda-head-group {
+      transform-origin: 180px 155px;
+      animation: headGroove var(--dance-speed) ease-in-out infinite;
+    }
+
+    .panda-arm-left {
+      transform-origin: 122px 185px;
+      animation: armLeftWave var(--dance-speed) ease-in-out infinite;
+    }
+
+    .panda-arm-right {
+      transform-origin: 238px 185px;
+      animation: armRightWave var(--dance-speed) ease-in-out infinite;
+    }
+
+    .panda-leg-left {
+      transform-origin: 145px 255px;
+      animation: legLeftTap var(--dance-speed) ease-in-out infinite;
+    }
+
+    .panda-leg-right {
+      transform-origin: 215px 255px;
+      animation: legRightTap var(--dance-speed) ease-in-out infinite;
+    }
+
+    .panda-blush {
+      transform-origin: center;
+      animation: blushGlow calc(var(--dance-speed) * 0.5) ease-in-out alternate infinite;
+    }
+
+    .panda-sparkle {
+      transform-origin: center;
+      animation: starBlink calc(var(--dance-speed) * 0.85) ease-in-out infinite;
+    }
+
+    @keyframes bodyBounce {
+      0%, 100% {
+        transform: translateY(0px) scaleY(1) scaleX(1);
+      }
+      25% {
+        transform: translateY(-13px) scaleY(1.03) scaleX(0.98);
+      }
+      50% {
+        transform: translateY(3px) scaleY(0.96) scaleX(1.03);
+      }
+      75% {
+        transform: translateY(-11px) scaleY(1.02) scaleX(0.99);
+      }
+    }
+
+    @keyframes headGroove {
+      0%, 100% {
+        transform: rotate(0deg) translateY(0px);
+      }
+      25% {
+        transform: rotate(-12deg) translateY(-3px);
+      }
+      50% {
+        transform: rotate(0deg) translateY(2px);
+      }
+      75% {
+        transform: rotate(12deg) translateY(-3px);
+      }
+    }
+
+    @keyframes armLeftWave {
+      0%, 100% {
+        transform: rotate(10deg);
+      }
+      25% {
+        transform: rotate(-50deg);
+      }
+      50% {
+        transform: rotate(18deg);
+      }
+      75% {
+        transform: rotate(-40deg);
+      }
+    }
+
+    @keyframes armRightWave {
+      0%, 100% {
+        transform: rotate(-10deg);
+      }
+      25% {
+        transform: rotate(40deg);
+      }
+      50% {
+        transform: rotate(-18deg);
+      }
+      75% {
+        transform: rotate(50deg);
+      }
+    }
+
+    @keyframes legLeftTap {
+      0%, 100% {
+        transform: rotate(0deg) translateY(0px);
+      }
+      25% {
+        transform: rotate(-18deg) translateY(-6px);
+      }
+      50% {
+        transform: rotate(6deg) translateY(0px);
+      }
+      75% {
+        transform: rotate(0deg) translateY(-2px);
+      }
+    }
+
+    @keyframes legRightTap {
+      0%, 100% {
+        transform: rotate(0deg) translateY(0px);
+      }
+      25% {
+        transform: rotate(0deg) translateY(-2px);
+      }
+      50% {
+        transform: rotate(6deg) translateY(0px);
+      }
+      75% {
+        transform: rotate(18deg) translateY(-6px);
+      }
+    }
+
+    @keyframes shadowPulse {
+      0%, 100% {
+        transform: scaleX(1) scaleY(1);
+        opacity: 0.25;
+      }
+      25%, 75% {
+        transform: scaleX(0.82) scaleY(0.85);
+        opacity: 0.14;
+      }
+      50% {
+        transform: scaleX(1.06) scaleY(1.04);
+        opacity: 0.3;
+      }
+    }
+
+    @keyframes blushGlow {
+      0% {
+        opacity: 0.65;
+        transform: scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.12);
+      }
+    }
+
+    @media (max-width: 420px) {
+      .slide-panda-box {
+        width: 92px;
+        height: 92px;
+      }
+      .crescent-moon-wrapper {
+        width: 72px;
+        height: 72px;
+        top: 16px;
+        right: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-rose-50 via-sky-50 to-amber-50 text-slate-800 antialiased">
+
+  <!-- Toast Notifikasi Non-Alert -->
+  <div
+    id="toastBanner"
+    role="status"
+    aria-live="polite"
+    class="fixed top-4 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full bg-slate-900/95 text-white text-xs sm:text-sm font-semibold shadow-xl border border-white/15 flex items-center gap-2 transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none"
+  >
+    <span>💙</span>
+    <span id="toastMessage">Siap!</span>
+  </div>
+
+  <!-- =======================================================================
+       VIEW 1: RESI PENGIRIMAN J&T EXPRESS UKURAN 100mm x 120mm
+       ======================================================================= -->
+  <section id="receiptView" class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6">
+
+    <!-- Panel Aksi Atas Resi -->
+    <div class="w-full max-w-[390px] mb-4 flex flex-wrap items-center justify-between gap-2 no-print">
+      <button
+        type="button"
+        onclick="openEditModal()"
+        class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-white hover:bg-rose-50 text-slate-800 border border-slate-200 shadow-sm transition cursor-pointer active:scale-95"
+      >
+        <span>✏️</span>
+        <span>Edit Resi &amp; Foto</span>
+      </button>
+
+      <button
+        type="button"
+        onclick="window.print()"
+        class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-white hover:bg-sky-50 text-slate-800 border border-slate-200 shadow-sm transition cursor-pointer active:scale-95"
+      >
+        <span>🖨️</span>
+        <span>Cetak 100×120</span>
+      </button>
+
+      <button
+        type="button"
+        onclick="scanAndOpenEnvelope()"
+        class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-600/25 transition cursor-pointer active:scale-95"
+      >
+        <span>📦</span>
+        <span>Buka Amplop</span>
+      </button>
+    </div>
+
+    <!-- KARTU RESI J&T EXPRESS 100mm x 120mm -->
+    <article
+      id="jntReceiptCard"
+      onclick="handleReceiptSurfaceClick(event)"
+      class="resi-jnt-100x120 cursor-pointer group"
+      title="Klik resi, link URL, atau scan QR untuk membuka Amplop Biru Langit"
+    >
+      <!-- Garis Laser Scan -->
+      <div class="scan-laser-line" aria-hidden="true"></div>
+
+      <!-- Bagian Atas: Header J&T EXPRESS + Kode Layanan + Barcode -->
+      <div>
+        <div class="flex items-center justify-between border-b-2 border-slate-900 pb-2">
+          <div class="flex items-center gap-2">
+            <div class="bg-red-600 text-white font-black tracking-tighter px-2.5 py-1 rounded text-sm leading-none shadow-sm">
+              J&amp;T
+            </div>
+            <div>
+              <div class="text-xs font-black tracking-wider text-red-600 leading-none">J&amp;T EXPRESS</div>
+              <div class="text-[10px] font-semibold text-slate-500 mt-0.5">LABEL 100×120mm • CINTA KILAT</div>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="inline-block px-2 py-0.5 rounded bg-red-600 text-white font-black text-xs tracking-wide">
+              EZ-LOVE
+            </span>
+            <div class="text-[10px] font-bold text-slate-700 mt-0.5" id="resiDateDisplay">21 NOV 2026</div>
+          </div>
+        </div>
+
+        <!-- Barcode & Nomor Resi J&T -->
+        <div class="pt-2 pb-2 border-b border-dashed border-slate-400">
+          <div class="jnt-barcode-lines w-full"></div>
+          <div class="flex items-center justify-between mt-1">
+            <span class="text-[10px] font-bold text-slate-500 uppercase">No. Resi J&amp;T:</span>
+            <span id="resiWaybillDisplay" class="font-mono text-xs font-black tracking-wider text-slate-900">
+              JT20261121CINTA01
+            </span>
+          </div>
+        </div>
+
+        <!-- Blok Penerima & Pengirim -->
+        <div class="grid grid-cols-1 gap-2 py-2 border-b-2 border-slate-900">
+          <!-- PENERIMA -->
+          <div class="bg-rose-50/75 border border-rose-200 rounded-md p-2">
+            <div class="flex items-center justify-between text-[10px] font-extrabold text-red-600 uppercase tracking-wider mb-0.5">
+              <span>📥 Penerima (Recipient)</span>
+              <span>HUB: BGR-BJG</span>
+            </div>
+            <div id="resiRecipientName" class="text-sm font-black text-slate-950 tracking-tight leading-snug">
+              ANDRIYANSAH PUTRA HANGGARA
+            </div>
+            <div class="text-[11px] font-semibold text-slate-700 mt-0.5">
+              Alamat: <span id="resiRecipientAddress" class="font-extrabold text-slate-900">KP.BOJONG</span>
+            </div>
+            <div class="text-[11px] font-semibold text-slate-700">
+              No. Telepon: <span id="resiRecipientPhone" class="font-extrabold text-slate-900">-</span>
+            </div>
+          </div>
+
+          <!-- PENGIRIM & INFO PAKET -->
+          <div class="grid grid-cols-12 gap-1.5 items-center text-[11px]">
+            <div class="col-span-8 bg-sky-50/80 border border-sky-200 rounded-md p-1.5">
+              <div class="text-[9px] font-extrabold text-sky-700 uppercase">📤 Pengirim (Sender)</div>
+              <div id="resiSenderName" class="font-black text-slate-900 text-xs truncate">SANG KEKASIH</div>
+              <div class="text-[10px] text-slate-600 truncate">Isi: Peluk Hangat, Doa &amp; Rindu</div>
+            </div>
+            <div class="col-span-4 bg-slate-100 border border-slate-300 rounded-md p-1.5 text-center">
+              <div class="text-[9px] font-bold text-slate-500 uppercase">Berat</div>
+              <div class="text-xs font-black text-slate-900">100% CINTA</div>
+              <div class="text-[9px] font-bold text-emerald-700">COD: PELUKAN</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bagian Tengah: Kata-Kata Manis & Semangat di Resi -->
+      <div class="my-1.5 bg-gradient-to-r from-sky-50 via-white to-rose-50 border border-sky-200/90 rounded-lg px-2.5 py-2">
+        <div class="text-[10px] font-extrabold uppercase tracking-wider text-sky-700 flex items-center justify-between">
+          <span>💌 Pesan Manis &amp; Semangat</span>
+          <span class="text-rose-500">♥</span>
+        </div>
+        <p id="resiSweetNote" class="font-hand text-lg leading-tight text-slate-800 mt-0.5">
+          "Semangat terus ya sayangku Andriyansah! Langkah kecilmu hari ini adalah jalan menuju mimpi besar kita. Aku selalu bangga &amp; menyayangimu."
+        </p>
+      </div>
+
+      <!-- Bagian Bawah: Link URL Klik + QR Code Scan -->
+      <div class="flex items-center justify-between gap-2.5 pt-1.5 border-t border-slate-300">
+        <div class="min-w-0 flex-1">
+          <div class="text-[10px] font-extrabold text-red-600 uppercase tracking-wide">
+            🔗 Klik Link atau Scan QR:
+          </div>
+          <a
+            id="resiUrlLink"
+            href="#amplop"
+            onclick="event.preventDefault(); event.stopPropagation(); scanAndOpenEnvelope();"
+            class="block text-[11px] font-bold text-sky-700 underline decoration-sky-400 underline-offset-2 truncate hover:text-red-600"
+          >
+            https://jnt-cinta.id/andriyansah-kpbojong#amplop
+          </a>
+          <div class="mt-1.5 flex items-center gap-1.5">
+            <button
+              type="button"
+              onclick="event.stopPropagation(); scanAndOpenEnvelope();"
+              class="px-2.5 py-1 rounded bg-sky-500 hover:bg-sky-600 text-white text-[10px] font-extrabold tracking-wide shadow-sm transition cursor-pointer"
+            >
+              SCAN / KLIK BUKA AMPLOP →
+            </button>
+          </div>
+        </div>
+
+        <!-- QR Code SVG yang Dapat Dipindai / Diklik -->
+        <button
+          type="button"
+          onclick="event.stopPropagation(); scanAndOpenEnvelope();"
+          aria-label="Scan atau klik QR Code untuk membuka Amplop Biru Langit"
+          class="w-20 h-20 p-1 rounded-lg bg-white border-2 border-slate-900 shadow-sm flex-shrink-0 hover:scale-105 hover:border-red-600 transition cursor-pointer relative"
+        >
+          <svg id="qrCodeSvg" viewBox="0 0 21 21" class="w-full h-full" shape-rendering="crispEdges">
+            <!-- Diisi dinamis lewat JavaScript -->
+          </svg>
+        </button>
+      </div>
+    </article>
+
+    <p class="mt-3 text-center text-xs text-slate-500 max-w-[380px] no-print">
+      Ukuran label <strong class="text-slate-700">100mm × 120mm</strong> • Klik QR Code, link URL, atau area resi untuk membuka <strong class="text-sky-600">Amplop Biru Langit</strong>.
+    </p>
+  </section>
+
+  <!-- =======================================================================
+       VIEW 2: AMPLOP BIRU LANGIT + LANGIT SAKURA, BINTANG, LOVE & BULAN SABIT
+       ======================================================================= -->
+  <section id="envelopeView" class="hidden min-h-screen night-sky-backdrop text-white px-4 py-6 sm:py-8 relative">
+
+    <!-- Bulan Sabit Berkelap-Kelip di Langit -->
+    <div class="crescent-moon-wrapper" aria-hidden="true">
+      <svg viewBox="0 0 120 120" class="w-full h-full overflow-visible">
+        <defs>
+          <linearGradient id="moonGrad" x1="15%" y1="10%" x2="85%" y2="90%">
+            <stop offset="0%" stop-color="#FEF9C3" />
+            <stop offset="55%" stop-color="#FDE047" />
+            <stop offset="100%" stop-color="#F59E0B" />
+          </linearGradient>
+        </defs>
+        <!-- Lingkaran sabit -->
+        <path
+          d="M76 16 A42 42 0 1 0 102 82 A34 34 0 1 1 76 16 Z"
+          fill="url(#moonGrad)"
+        />
+        <!-- Kilau kecil di sekitar bulan sabit -->
+        <path d="M98 22 L100 27 L105 29 L100 31 L98 36 L96 31 L91 29 L96 27 Z" fill="#FEF08A" />
+        <circle cx="32" cy="28" r="2.6" fill="#FFFFFF" />
+        <circle cx="106" cy="56" r="2.2" fill="#BAE6FD" />
+      </svg>
+    </div>
+
+    <!-- Container Dekorasi Bintang Berkelip, Bunga Sakura & Love Bertaburan -->
+    <div id="skyDecorationsLayer" class="fixed inset-0 pointer-events-none overflow-hidden z-[2]" aria-hidden="true"></div>
+
+    <!-- Konten Utama di Atas Langit -->
+    <div class="relative z-10 max-w-5xl mx-auto">
+
+      <!-- Bar Navigasi Atas -->
+      <header class="flex flex-wrap items-center justify-between gap-3 mb-6">
+        <button
+          type="button"
+          onclick="backToReceiptView()"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/15 hover:bg-white/25 backdrop-blur-md text-white text-xs sm:text-sm font-bold border border-white/25 transition cursor-pointer"
+        >
+          <span>←</span>
+          <span>Kembali ke Resi J&amp;T</span>
+        </button>
+
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            onclick="toggleMusic()"
+            id="btnMusicToggle"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-sky-400/25 hover:bg-sky-400/35 backdrop-blur-md text-sky-100 text-xs sm:text-sm font-bold border border-sky-200/35 transition cursor-pointer"
+          >
+            <span id="musicIcon">🎵</span>
+            <span id="musicLabel">Musik Romantis</span>
+          </button>
+
+          <button
+            type="button"
+            onclick="openEditModal()"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-rose-500/30 hover:bg-rose-500/45 backdrop-blur-md text-rose-100 text-xs sm:text-sm font-bold border border-rose-200/35 transition cursor-pointer"
+          >
+            <span>✏️</span>
+            <span>Edit</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Judul Sambutan untuk Andriyansah Putra Hanggara -->
+      <div class="text-center mb-7">
+        <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-sky-400/20 border border-sky-200/40 text-sky-100 text-xs font-bold tracking-wide mb-2">
+          <span>🌸</span>
+          <span>Paket Cinta Spesial • KP.BOJONG</span>
+          <span>🌙</span>
+        </span>
+        <h1 class="text-2xl sm:text-4xl font-black tracking-tight text-white drop-shadow">
+          Untuk <span id="heroRecipientName" class="text-sky-200">ANDRIYANSAH PUTRA HANGGARA</span>
+        </h1>
+        <p class="text-xs sm:text-sm text-sky-100/90 mt-1.5">
+          Dari <strong id="heroSenderName" class="text-rose-200">SANG KEKASIH</strong> — Klik amplop biru langit &amp; geser slide foto penuh cinta &amp; semangat!
+        </p>
+      </div>
+
+      <!-- Grid Dua Kolom: Amplop Biru Langit + Slide Foto Polaroid Panda Menari -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-center">
+
+        <!-- Kolom Kiri: Amplop Warna Biru Langit -->
+        <div class="lg:col-span-5 flex flex-col items-center">
+          <div
+            id="skyEnvelopeCard"
+            onclick="toggleSkyEnvelope()"
+            role="button"
+            tabindex="0"
+            aria-label="Klik untuk membuka atau menutup Amplop Warna Biru Langit"
+            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSkyEnvelope();}"
+            class="sky-envelope-card"
+          >
+            <div id="skyEnvelopeBody" class="sky-envelope-body">
+              <!-- Lipatan Samping Amplop -->
+              <div class="envelope-side-folds"></div>
+
+              <!-- Surat Cinta Biru Langit di Dalam Amplop -->
+              <div class="absolute inset-x-4 top-6 bottom-5 bg-white/95 text-slate-800 rounded-xl p-3.5 shadow-inner z-[2] flex flex-col justify-between">
+                <div class="flex items-center justify-between text-[11px] font-extrabold text-sky-700 border-b border-sky-100 pb-1">
+                  <span>✉️ SURAT BIRU LANGIT</span>
+                  <span class="text-rose-500">♥</span>
+                </div>
+                <p class="font-hand text-xl leading-snug text-slate-800">
+                  "Sayangku Andriyansah, setiap bintang &amp; kelopak sakura ini membawa doa supaya kamu selalu kuat, sehat, dan bahagia."
+                </p>
+                <div class="text-[11px] font-bold text-sky-700 text-right">
+                  — Dari Sang Kekasih 💙
+                </div>
+              </div>
+
+              <!-- Tutup Amplop Atas -->
+              <div class="envelope-top-flap"></div>
+
+              <!-- Saku Amplop Bawah -->
+              <div class="envelope-bottom-pocket flex flex-col justify-end p-4 text-white">
+                <div class="flex items-center justify-between text-xs font-extrabold tracking-wide drop-shadow">
+                  <span>AMPLOP BIRU LANGIT</span>
+                  <span id="envelopeStatusTag" class="px-2 py-0.5 rounded-full bg-white/25 text-[10px]">
+                    KLIK BUKA
+                  </span>
+                </div>
+                <div class="text-[11px] text-sky-100/95 truncate mt-0.5">
+                  Kepada: <span id="envRecipientLabel">ANDRIYANSAH PUTRA HANGGARA</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Segel Hati di Tengah Amplop -->
+            <div class="envelope-heart-seal" aria-hidden="true">
+              <span class="text-2xl leading-none">💙</span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onclick="toggleSkyEnvelope()"
+            class="mt-4 px-5 py-2.5 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 font-extrabold text-xs sm:text-sm shadow-lg shadow-sky-500/30 transition cursor-pointer active:scale-95"
+          >
+            <span id="btnEnvelopeActionText">✨ Klik Amplop Biru Langit untuk Membuka Foto</span>
+          </button>
+        </div>
+
+        <!-- Kolom Kanan: Slide Foto Baru Muncul Setelah Amplop Biru Langit Diklik -->
+        <div id="photoSlideSection" class="lg:col-span-7 flex flex-col items-center hidden opacity-0 translate-y-4 transition-all duration-500">
+          <div class="polaroid-stack-stage w-full">
+            <!-- Bingkai polaroid bayangan berantakan terstruktur di belakang -->
+            <div class="polaroid-ghost-back polaroid-ghost-1" aria-hidden="true"></div>
+            <div class="polaroid-ghost-back polaroid-ghost-2" aria-hidden="true"></div>
+
+            <!-- Kartu Polaroid Aktif -->
+            <article id="polaroidCard" class="polaroid-active-card text-slate-800">
+              <div class="washi-tape" aria-hidden="true"></div>
+
+              <!-- Area Foto Utama Slide -->
+              <div class="relative rounded-xl overflow-hidden bg-sky-100 border border-sky-200/80 aspect-[16/10]">
+                <img
+                  id="slidePhotoImg"
+                  src=""
+                  alt="Foto kenangan manis"
+                  class="w-full h-full object-cover transition-all duration-500"
+                  onerror="this.src='a.jpeg';"
+                />
+                <span
+                  id="slideBadgeText"
+                  class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full bg-slate-900/75 backdrop-blur-sm text-white text-[11px] font-bold shadow"
+                >
+                  Slide 1 / 4
+                </span>
+                <span
+                  id="slidePandaNameBadge"
+                  class="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-full bg-sky-500/90 backdrop-blur-sm text-white text-[11px] font-extrabold shadow"
+                >
+                  🐼 Panda Buket Bunga
+                </span>
+              </div>
+
+              <!-- Baris Bawah Polaroid: Panda Menari Berganti Tiap Slide + Kata Manis & Semangat -->
+              <div class="mt-3 flex items-center gap-3 bg-gradient-to-br from-sky-50 via-white to-rose-50/80 border border-sky-100 rounded-xl p-2.5">
+                <!-- Wadah SVG Panda Menari (Berbeda di Setiap Slide) -->
+                <div id="slidePandaBox" class="slide-panda-box">
+                  <svg id="slidePandaSvg" viewBox="0 0 360 340" class="w-full h-full overflow-visible" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Diisi & diganti karakternya per slide -->
+                  </svg>
+                </div>
+
+                <!-- Teks Judul, Kata Manis & Semangat untuk Kekasih -->
+                <div class="min-w-0 flex-1">
+                  <h2 id="slideTitleText" class="text-sm sm:text-base font-black text-slate-900 leading-tight">
+                    Untukmu, Andriyansah Sayang 🌸
+                  </h2>
+                  <p id="slideQuoteText" class="font-hand text-xl sm:text-2xl leading-snug text-rose-600 mt-1">
+                    "Jangan pernah ragu sama langkahmu ya sayang, aku selalu di sini mendoakan dan menyemangatimu."
+                  </p>
+                  <p id="slideSubNoteText" class="text-[11px] font-semibold text-sky-700 mt-1">
+                    Dari Sang Kekasih • KP.BOJONG
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Kontrol Navigasi Slide (Sebelumnya, Indikator Titik, Berikutnya) -->
+          <div class="mt-5 flex items-center justify-center gap-3">
+            <button
+              type="button"
+              onclick="prevSlide()"
+              class="px-4 py-2 rounded-xl bg-white/15 hover:bg-white/25 backdrop-blur-md text-white text-xs sm:text-sm font-bold border border-white/25 transition cursor-pointer active:scale-95"
+            >
+              ← Prev
+            </button>
+
+            <div id="slideDotsContainer" class="flex items-center gap-2"></div>
+
+            <button
+              type="button"
+              onclick="nextSlide()"
+              class="px-4 py-2 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 text-xs sm:text-sm font-extrabold shadow-md transition cursor-pointer active:scale-95"
+            >
+              Next →
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       MODAL EDIT DATA RESI J&T & SLIDE FOTO + KATA MANIS / SEMANGAT
+       ======================================================================= -->
+  <div
+    id="editModal"
+    class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="editModalTitle"
+  >
+    <div class="bg-white text-slate-800 w-full max-w-2xl rounded-2xl shadow-2xl border border-slate-200 p-5 sm:p-6 my-8 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+        <h3 id="editModalTitle" class="text-lg font-extrabold text-slate-900">
+          ✏️ Edit Resi J&amp;T, Foto Slide &amp; Kata Semangat
+        </h3>
+        <button
+          type="button"
+          onclick="closeEditModal()"
+          class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center cursor-pointer"
+          aria-label="Tutup modal edit"
+        >
+          ✕
+        </button>
+      </div>
+
+      <form id="editForm" onsubmit="saveEditsFromModal(event)" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Nama Penerima</label>
+            <input type="text" id="inputRecipientName" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm font-semibold focus:outline-none focus:border-sky-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Nama Pengirim</label>
+            <input type="text" id="inputSenderName" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm font-semibold focus:outline-none focus:border-sky-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Alamat</label>
+            <input type="text" id="inputRecipientAddress" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm font-semibold focus:outline-none focus:border-sky-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">No. Telepon</label>
+            <input type="text" id="inputRecipientPhone" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm font-semibold focus:outline-none focus:border-sky-500" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Kata-Kata Manis &amp; Semangat di Resi J&amp;T</label>
+          <textarea id="inputReceiptNote" rows="2" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-sky-500"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Link URL Tujuan Scan / Klik</label>
+          <input type="text" id="inputCustomUrl" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm font-mono focus:outline-none focus:border-sky-500" />
+        </div>
+
+        <!-- Pengaturan Per Slide (Foto + Kata Manis & Semangat) -->
+        <div class="space-y-3 pt-2 border-t border-slate-200">
+          <div class="text-xs font-extrabold uppercase tracking-wider text-sky-700">
+            📸 Foto &amp; Kata Manis/Semangat di Setiap Slide (Panda Berbeda Tiap Slide)
+          </div>
+          <div id="slideEditorList" class="space-y-3"></div>
+        </div>
+
+        <div class="flex items-center justify-end gap-2.5 pt-4 border-t border-slate-200">
+          <button
+            type="button"
+            onclick="closeEditModal()"
+            class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-bold cursor-pointer"
+          >
+            Batal
+          </button>
+          <button
+            type="submit"
+            class="px-5 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs sm:text-sm font-extrabold shadow cursor-pointer"
+          >
+            Simpan Perubahan
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       SCRIPT UTAMA: STATE, SVG FOTO & PANDA BERBEDA TIAP SLIDE, DEKORASI LANGIT
+       ======================================================================= -->
+  <script>
+    // Helper membuat SVG data URL ilustrasi foto pasangan/momen manis agar setiap slide langsung punya foto indah
+    function createRomanticPhotoDataUrl(themeKey, mainTitle, subCaption) {
+      const palettes = {
+        sakura: {
+          bg1: '#bae6fd',
+          bg2: '#fbcfe8',
+          accent: '#f43f5e',
+          hill: '#0284c7',
+          emoji: '🌸💑'
+        },
+        semangat: {
+          bg1: '#7dd3fc',
+          bg2: '#fde68a',
+          accent: '#0284c7',
+          hill: '#0369a1',
+          emoji: '⚡✨'
+        },
+        malam: {
+          bg1: '#0f172a',
+          bg2: '#1d4ed8',
+          accent: '#facc15',
+          hill: '#172554',
+          emoji: '🌙💫'
+        },
+        selamanya: {
+          bg1: '#fbcfe8',
+          bg2: '#bae6fd',
+          accent: '#ec4899',
+          hill: '#0369a1',
+          emoji: '💙🌹'
+        }
+      };
+
+      const p = palettes[themeKey] || palettes.sakura;
+      const safeTitle = String(mainTitle).replace(/[<>&"]/g, '');
+      const safeSub = String(subCaption).replace(/[<>&"]/g, '');
+
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
+          <defs>
+            <linearGradient id="skyBg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="${p.bg1}" />
+              <stop offset="100%" stop-color="${p.bg2}" />
+            </linearGradient>
+          </defs>
+          <rect width="640" height="400" fill="url(#skyBg)" />
+          <circle cx="520" cy="95" r="46" fill="#fef08a" opacity="0.82" />
+          <circle cx="115" cy="85" r="22" fill="#ffffff" opacity="0.65" />
+          <path d="M0 295 Q170 230 340 290 T640 270 L640 400 L0 400 Z" fill="${p.hill}" opacity="0.88" />
+          <path d="M0 325 Q220 275 430 320 T640 305 L640 400 L0 400 Z" fill="#0f172a" opacity="0.35" />
+          <!-- Hati manis di tengah foto -->
+          <path d="M320 185 C320 165, 290 152, 275 170 C260 188, 282 214, 320 242 C358 214, 380 188, 365 170 C350 152, 320 165, 320 185 Z" fill="${p.accent}" />
+          <text x="320" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="34" font-weight="800" fill="#ffffff" stroke="#0f172a" stroke-opacity="0.25" stroke-width="1.5">${safeTitle}</text>
+          <text x="320" y="282" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#ffffff">${safeSub}</text>
+          <text x="320" y="206" text-anchor="middle" font-size="28">${p.emoji}</text>
+        </svg>
+      `.trim();
+
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    }
+
+    // Data state aplikasi
+    const appState = {
+      receipt: {
+        courier: 'J&T EXPRESS',
+        waybill: 'JT20261121CINTA01',
+        date: '21 NOV 2026',
+        recipientName: 'ANDRIYANSAH PUTRA HANGGARA',
+        recipientAddress: 'KP.BOJONG',
+        recipientPhone: '-',
+        senderName: 'SANG KEKASIH',
+        sweetNote: '"Semangat terus ya sayangku Andriyansah! Langkah kecilmu hari ini adalah jalan menuju mimpi besar kita. Aku selalu bangga & menyayangimu."',
+        url: 'https://jnt-cinta.id/andriyansah-kpbojong#amplop'
+      },
+      currentSlide: 0,
+      envelopeOpen: false,
+      musicPlaying: false,
+      audioCtx: null,
+      musicTimer: null,
+      musicStep: 0,
+      slides: [
+        {
+          id: 1,
+          pandaCharacter: 'buket',
+          pandaLabel: '🐼 Panda Buket Bunga',
+          badge: 'Slide 1 / 4 • Pita Sakura',
+          tilt: '-2.8deg',
+          danceSpeed: '1.35s',
+          title: 'Semangat Pagi & Peluk Manis 🌸',
+          quote: '"Andriyansah sayang, senyummu selalu bikin hariku cerah. Tetap semangat ngejar impianmu ya, aku selalu di sampingmu!"',
+          subNote: 'Dari Sang Kekasih • KP.BOJONG',
+          photo: createRomanticPhotoDataUrl('sakura', 'Untukmu, Andriyansah', 'Bunga Sakura & Doa Manis')
+        },
+        {
+          id: 2,
+          pandaCharacter: 'semangat',
+          pandaLabel: '🐼 Panda Pejuang Keren',
+          badge: 'Slide 2 / 4 • Kacamata & Topi',
+          tilt: '2.6deg',
+          danceSpeed: '0.95s',
+          title: 'Kamu Hebat & Pasti Bisa! ⚡',
+          quote: '"Kalau lelah, istirahat sebentar ya sayang. Kamu sekuat yang kamu kira, dan aku percaya setiap usahamu nggak akan sia-sia."',
+          subNote: 'Semangat Terus Pejuangku • Sang Kekasih',
+          photo: createRomanticPhotoDataUrl('semangat', 'Tetap Semangat Sayang', 'Setiap Langkahmu Berarti')
+        },
+        {
+          id: 3,
+          pandaCharacter: 'malam',
+          pandaLabel: '🐼 Panda Bintang Bulan',
+          badge: 'Slide 3 / 4 • Topi Bulan Sabit',
+          tilt: '-2.2deg',
+          danceSpeed: '0.62s',
+          title: 'Di Bawah Bulan & Bintang 🌙',
+          quote: '"Saat malam tiba dan bintang berkelip, ingatlah ada aku yang selalu mendoakanmu dalam diam dan menyayangimu setulus hati."',
+          subNote: 'Mimpi Indah ya Sayang • Sang Kekasih',
+          photo: createRomanticPhotoDataUrl('malam', 'Langit Malam & Doa', 'Bintang Berkelip Untukmu')
+        },
+        {
+          id: 4,
+          pandaCharacter: 'selamanya',
+          pandaLabel: '🐼 Panda Cinta Selamanya',
+          badge: 'Slide 4 / 4 • Mahkota Cinta',
+          tilt: '2.4deg',
+          danceSpeed: '0.82s',
+          title: 'Sayang Kamu Selamanya 💙',
+          quote: '"Terima kasih sudah jadi rumah ternyaman. Ayo tumbuh hebat bersama di bawah langit biru yang penuh cinta ini, Andriyansah!"',
+          subNote: 'Selamanya Milikmu • Sang Kekasih',
+          photo: createRomanticPhotoDataUrl('selamanya', 'Cinta Untuk Selamanya', 'Andriyansah & Sang Kekasih')
+        }
+      ]
+    };
+
+    // Menampilkan toast singkat tanpa alert()
+    function showToast(message) {
+      const banner = document.getElementById('toastBanner');
+      const textEl = document.getElementById('toastMessage');
+      if (!banner || !textEl) return;
+
+      textEl.textContent = message;
+      banner.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
+      banner.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(window.__toastTimeout);
+      window.__toastTimeout = setTimeout(() => {
+        banner.classList.remove('opacity-100', 'translate-y-0');
+        banner.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+      }, 2400);
+    }
+
+    // Menggambar pola QR Code deterministik yang rapi di resi J&T
+    function renderQrCodeMatrix() {
+      const svg = document.getElementById('qrCodeSvg');
+      if (!svg) return;
+
+      const size = 21;
+      let rects = '';
+
+      function isFinder(r, c) {
+        const boxes = [
+          [0, 0],
+          [0, 14],
+          [14, 0]
+        ];
+        for (const [br, bc] of boxes) {
+          if (r >= br && r < br + 7 && c >= bc && c < bc + 7) {
+            const lr = r - br;
+            const lc = c - bc;
+            if (lr === 0 || lr === 6 || lc === 0 || lc === 6) return true;
+            if (lr >= 2 && lr <= 4 && lc >= 2 && lc <= 4) return true;
+            return false;
+          }
+        }
+        return null;
+      }
+
+      const seedStr = appState.receipt.url + '|' + appState.receipt.recipientName;
+      let hash = 2166136261;
+      for (let i = 0; i < seedStr.length; i++) {
+        hash ^= seedStr.charCodeAt(i);
+        hash = Math.imul(hash, 16777619);
+      }
+
+      for (let r = 0; r < size; r++) {
+        for (let c = 0; c < size; c++) {
+          const finderVal = isFinder(r, c);
+          let dark = false;
+          if (finderVal !== null) {
+            dark = finderVal;
+          } else if (r === 6 || c === 6) {
+            dark = (r + c) % 2 === 0;
+          } else {
+            const mixed = ((r * 31 + c * 17) ^ (hash >>> ((r + c) % 16))) & 1;
+            dark = mixed === 1;
+          }
+          if (dark) {
+            rects += `<rect x="${c}" y="${r}" width="1" height="1" fill="#0f172a" />`;
+          }
+        }
+      }
+
+      svg.innerHTML = `<rect width="21" height="21" fill="#ffffff" />${rects}`;
+    }
+
+    // Menyinkronkan data resi J&T Express ke tampilan DOM
+    function renderReceiptUI() {
+      const r = appState.receipt;
+      document.getElementById('resiDateDisplay').textContent = r.date;
+      document.getElementById('resiWaybillDisplay').textContent = r.waybill;
+      document.getElementById('resiRecipientName').textContent = r.recipientName;
+      document.getElementById('resiRecipientAddress').textContent = r.recipientAddress;
+      document.getElementById('resiRecipientPhone').textContent = r.recipientPhone;
+      document.getElementById('resiSenderName').textContent = r.senderName;
+      document.getElementById('resiSweetNote').textContent = r.sweetNote;
+
+      const linkEl = document.getElementById('resiUrlLink');
+      linkEl.textContent = r.url;
+      linkEl.href = r.url.includes('#') ? r.url : r.url + '#amplop';
+
+      document.getElementById('heroRecipientName').textContent = r.recipientName;
+      document.getElementById('heroSenderName').textContent = r.senderName;
+      document.getElementById('envRecipientLabel').textContent = r.recipientName;
+
+      renderQrCodeMatrix();
+    }
+
+    // Menghasilkan SVG karakter & kostum panda menari yang BERBEDA di setiap slide
+    function buildPandaSvgByCharacter(characterKey) {
+      let headgearSvg = '';
+      let eyesSvg = `
+        <path d="M139 128 Q149 117 159 128" fill="none" stroke="#FFFFFF" stroke-width="3.8" stroke-linecap="round" />
+        <path d="M201 128 Q211 117 221 128" fill="none" stroke="#FFFFFF" stroke-width="3.8" stroke-linecap="round" />
+      `;
+      let propLeftSvg = '';
+      let propRightSvg = '';
+      let outfitSvg = '';
+
+      if (characterKey === 'buket') {
+        // Slide 1: Panda Buket Bunga Sakura dengan pita cantik
+        headgearSvg = `
+          <g transform="translate(215, 76)">
+            <circle cx="-10" cy="0" r="9" fill="#f472b6" />
+            <circle cx="10" cy="0" r="9" fill="#f472b6" />
+            <circle cx="0" cy="0" r="5" fill="#fef08a" />
+          </g>
+        `;
+        propLeftSvg = `
+          <g transform="translate(86, 206)">
+            <polygon points="0,8 22,36 -14,34" fill="#f59e0b" stroke="#b45309" stroke-width="2" />
+            <circle cx="-4" cy="4" r="10" fill="#fb7185" />
+            <circle cx="10" cy="2" r="10" fill="#f472b6" />
+            <circle cx="3" cy="-7" r="10" fill="#fda4af" />
+            <circle cx="3" cy="2" r="4" fill="#fef08a" />
+          </g>
+        `;
+        outfitSvg = `<path d="M136 196 Q180 214 224 196" fill="none" stroke="#f472b6" stroke-width="6" stroke-linecap="round" />`;
+      } else if (characterKey === 'semangat') {
+        // Slide 2: Panda Pejuang Keren dengan baret biru langit & kacamata semangat
+        headgearSvg = `
+          <g transform="translate(180, 68) rotate(-8)">
+            <ellipse cx="0" cy="2" rx="46" ry="18" fill="#0284c7" stroke="#0369a1" stroke-width="2" />
+            <path d="M0 -16 L4 -10 L10 -10 L5 -6 L7 0 L0 -4 L-7 0 L-5 -6 L-10 -10 L-4 -10 Z" fill="#fde047" />
+          </g>
+        `;
+        eyesSvg = `
+          <rect x="131" y="119" width="34" height="20" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="2.5" />
+          <rect x="195" y="119" width="34" height="20" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="2.5" />
+          <line x1="165" y1="127" x2="195" y2="127" stroke="#38bdf8" stroke-width="3" />
+          <line x1="137" y1="124" x2="147" y2="134" stroke="#ffffff" stroke-width="2.2" opacity="0.7" />
+          <line x1="201" y1="124" x2="211" y2="134" stroke="#ffffff" stroke-width="2.2" opacity="0.7" />
+        `;
+        propRightSvg = `
+          <g transform="translate(262, 188)">
+            <circle cx="0" cy="0" r="14" fill="#fde047" stroke="#eab308" stroke-width="2" />
+            <path d="M-2 -7 L4 -1 L-1 -1 L3 7 L-5 0 L1 0 Z" fill="#ef4444" />
+          </g>
+        `;
+      } else if (characterKey === 'malam') {
+        // Slide 3: Panda Bintang Malam dengan topi bulan sabit emas & tongkat bintang
+        headgearSvg = `
+          <g transform="translate(180, 64)">
+            <polygon points="0,-42 -32,14 32,14" fill="#1e3a8a" stroke="#60a5fa" stroke-width="2" />
+            <circle cx="0" cy="-12" r="6" fill="#fde047" />
+            <ellipse cx="0" cy="14" rx="38" ry="8" fill="#fde047" />
+          </g>
+        `;
+        eyesSvg = `
+          <circle cx="149" cy="128" r="9" fill="#fef08a" />
+          <circle cx="211" cy="128" r="9" fill="#fef08a" />
+          <circle cx="151" cy="126" r="3.5" fill="#0f172a" />
+          <circle cx="213" cy="126" r="3.5" fill="#0f172a" />
+        `;
+        propRightSvg = `
+          <g transform="translate(268, 170)">
+            <line x1="-10" y1="45" x2="8" y2="4" stroke="#facc15" stroke-width="4" stroke-linecap="round" />
+            <polygon points="10,-12 14,-2 24,-2 16,4 19,14 10,8 1,14 4,4 -4,-2 6,-2" fill="#fde047" stroke="#f59e0b" stroke-width="1.5" />
+          </g>
+        `;
+      } else {
+        // Slide 4: Panda Cinta Selamanya dengan mahkota bunga, mata hati & surat cinta
+        headgearSvg = `
+          <g transform="translate(180, 74)">
+            <path d="M-44 10 Q0 -14 44 10" fill="none" stroke="#f472b6" stroke-width="5" stroke-linecap="round" />
+            <circle cx="-28" cy="2" r="7" fill="#fda4af" />
+            <circle cx="0" cy="-5" r="8" fill="#fb7185" />
+            <circle cx="28" cy="2" r="7" fill="#fda4af" />
+          </g>
+        `;
+        eyesSvg = `
+          <path d="M149 136 C149 128, 137 123, 137 130 C137 135, 149 142, 149 142 C149 142, 161 135, 161 130 C161 123, 149 128, 149 136 Z" fill="#fb7185" />
+          <path d="M211 136 C211 128, 199 123, 199 130 C199 135, 211 142, 211 142 C211 142, 223 135, 223 130 C223 123, 211 128, 211 136 Z" fill="#fb7185" />
+        `;
+        propLeftSvg = `
+          <g transform="translate(76, 200)">
+            <rect x="0" y="0" width="32" height="22" rx="4" fill="#ffffff" stroke="#0284c7" stroke-width="2.2" />
+            <polyline points="0,2 16,13 32,2" fill="none" stroke="#38bdf8" stroke-width="2" />
+            <circle cx="16" cy="12" r="4" fill="#f43f5e" />
+          </g>
+        `;
+        outfitSvg = `<path d="M142 192 Q180 212 218 192" fill="none" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" />`;
+      }
+
+      return `
+        <defs>
+          <radialGradient id="pFurWhite" cx="45%" cy="35%" r="65%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="100%" stop-color="#e2e8f0" />
+          </radialGradient>
+          <linearGradient id="pFurBlack" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#334155" />
+            <stop offset="100%" stop-color="#0f172a" />
+          </linearGradient>
+        </defs>
+
+        <ellipse cx="180" cy="296" rx="74" ry="13" fill="#0f172a" class="panda-shadow" />
+
+        <g class="panda-sparkle" fill="#fde047">
+          <path d="M68 92 L71 100 L79 103 L71 106 L68 114 L65 106 L57 103 L65 100 Z" />
+          <path d="M292 86 L294.5 93 L301.5 95.5 L294.5 98 L292 105 L289.5 98 L282.5 95.5 L289.5 93 Z" fill="#f472b6" />
+        </g>
+
+        <g class="panda-body-group">
+          <g class="panda-leg-left">
+            <ellipse cx="144" cy="268" rx="23" ry="18" fill="url(#pFurBlack)" />
+          </g>
+          <g class="panda-leg-right">
+            <ellipse cx="216" cy="268" rx="23" ry="18" fill="url(#pFurBlack)" />
+          </g>
+
+          <g class="panda-arm-left">
+            <path d="M126 184 C102 188, 86 210, 94 226 C101 239, 122 230, 134 208 Z" fill="url(#pFurBlack)" />
+            ${propLeftSvg}
+          </g>
+
+          <g class="panda-arm-right">
+            <path d="M234 184 C258 188, 274 210, 266 226 C259 239, 238 230, 226 208 Z" fill="url(#pFurBlack)" />
+            ${propRightSvg}
+          </g>
+
+          <ellipse cx="180" cy="218" rx="56" ry="52" fill="url(#pFurWhite)" stroke="#cbd5e1" stroke-width="2" />
+          <path d="M128 192 C148 206, 212 206, 232 192 C236 202, 234 212, 228 218 C204 226, 156 226, 132 218 C126 212, 124 202, 128 192 Z" fill="url(#pFurBlack)" />
+          ${outfitSvg}
+
+          <g class="panda-head-group">
+            <circle cx="122" cy="96" r="24" fill="url(#pFurBlack)" />
+            <circle cx="238" cy="96" r="24" fill="url(#pFurBlack)" />
+            <ellipse cx="180" cy="134" rx="68" ry="57" fill="url(#pFurWhite)" stroke="#cbd5e1" stroke-width="2" />
+            ${headgearSvg}
+
+            <ellipse cx="149" cy="130" rx="19" ry="22" transform="rotate(-14 149 130)" fill="url(#pFurBlack)" />
+            <ellipse cx="211" cy="130" rx="19" ry="22" transform="rotate(14 211 130)" fill="url(#pFurBlack)" />
+
+            ${eyesSvg}
+
+            <ellipse cx="131" cy="150" rx="15" ry="9" fill="#fb7185" opacity="0.65" class="panda-blush" />
+            <ellipse cx="229" cy="150" rx="15" ry="9" fill="#fb7185" opacity="0.65" class="panda-blush" />
+
+            <ellipse cx="180" cy="144" rx="8.5" ry="5.8" fill="#1e293b" />
+            <path d="M167 154 Q180 169 193 154 Z" fill="#f43f5e" stroke="#1e293b" stroke-width="2.2" stroke-linejoin="round" />
+          </g>
+        </g>
+      `;
+    }
+
+    // Merender slide foto polaroid aktif + panda yang berganti di tiap slide
+    function renderCurrentSlide() {
+      const slide = appState.slides[appState.currentSlide];
+      if (!slide) return;
+
+      const card = document.getElementById('polaroidCard');
+      card.style.setProperty('--slide-tilt', slide.tilt);
+
+      const imgEl = document.getElementById('slidePhotoImg');
+      imgEl.src = slide.photo;
+      imgEl.alt = slide.title;
+
+      document.getElementById('slideBadgeText').textContent = slide.badge;
+      document.getElementById('slidePandaNameBadge').textContent = slide.pandaLabel;
+      document.getElementById('slideTitleText').textContent = slide.title;
+      document.getElementById('slideQuoteText').textContent = slide.quote;
+      document.getElementById('slideSubNoteText').textContent = slide.subNote;
+
+      const pandaBox = document.getElementById('slidePandaBox');
+      pandaBox.style.setProperty('--slide-dance-speed', slide.danceSpeed);
+
+      const pandaSvg = document.getElementById('slidePandaSvg');
+      pandaSvg.innerHTML = buildPandaSvgByCharacter(slide.pandaCharacter);
+
+      renderSlideDots();
+    }
+
+    function renderSlideDots() {
+      const container = document.getElementById('slideDotsContainer');
+      if (!container) return;
+
+      container.innerHTML = appState.slides
+        .map((s, idx) => {
+          const isActive = idx === appState.currentSlide;
+          return `
+            <button
+              type="button"
+              onclick="goToSlide(${idx})"
+              aria-label="Ke slide ${idx + 1}"
+              class="h-2.5 rounded-full transition-all cursor-pointer ${
+                isActive ? 'w-7 bg-sky-300 shadow' : 'w-2.5 bg-white/35 hover:bg-white/60'
+              }"
+            ></button>
+          `;
+        })
+        .join('');
+    }
+
+    function goToSlide(index) {
+      const total = appState.slides.length;
+      if (!total) return;
+      appState.currentSlide = ((index % total) + total) % total;
+      renderCurrentSlide();
+    }
+
+    function nextSlide() {
+      goToSlide(appState.currentSlide + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(appState.currentSlide - 1);
+    }
+
+    // Membuka / menutup Amplop Warna Biru Langit & menampilkan Slide Foto setelah amplop diklik
+    function syncPhotoSlideVisibility(isOpen) {
+      const slideSection = document.getElementById('photoSlideSection');
+      if (!slideSection) return;
+
+      clearTimeout(window.__slideHideTimer);
+
+      if (isOpen) {
+        slideSection.classList.remove('hidden');
+        renderCurrentSlide();
+        requestAnimationFrame(() => {
+          slideSection.classList.remove('opacity-0', 'translate-y-4');
+          slideSection.classList.add('opacity-100', 'translate-y-0');
+        });
+      } else {
+        slideSection.classList.remove('opacity-100', 'translate-y-0');
+        slideSection.classList.add('opacity-0', 'translate-y-4');
+        slideSection.classList.add('hidden');
+      }
+    }
+
+    function setSkyEnvelopeOpen(isOpen) {
+      appState.envelopeOpen = Boolean(isOpen);
+      const card = document.getElementById('skyEnvelopeCard');
+      const statusTag = document.getElementById('envelopeStatusTag');
+      const btnText = document.getElementById('btnEnvelopeActionText');
+
+      if (appState.envelopeOpen) {
+        card.classList.add('envelope-is-open');
+        statusTag.textContent = 'TERBUKA 💙';
+        btnText.textContent = '💌 Tutup Amplop Biru Langit';
+      } else {
+        card.classList.remove('envelope-is-open');
+        statusTag.textContent = 'KLIK BUKA';
+        btnText.textContent = '✨ Klik Amplop Biru Langit untuk Membuka Foto';
+      }
+
+      syncPhotoSlideVisibility(appState.envelopeOpen);
+    }
+
+    function toggleSkyEnvelope() {
+      setSkyEnvelopeOpen(!appState.envelopeOpen);
+      showToast(
+        appState.envelopeOpen
+          ? 'Amplop biru langit terbuka! Slide foto & panda menari kini muncul 💙'
+          : 'Amplop biru langit ditutup kembali.'
+      );
+    }
+
+    // Transisi dari Resi J&T 100x120 ke Amplop Biru Langit (amplop tertutup dulu sampai diklik)
+    function scanAndOpenEnvelope() {
+      const card = document.getElementById('jntReceiptCard');
+      if (card) {
+        card.classList.remove('resi-scanning');
+        void card.offsetWidth;
+        card.classList.add('resi-scanning');
+      }
+      showToast('Memindai resi J&T... Klik Amplop Biru Langit untuk membuka slide foto! 💙');
+
+      setTimeout(() => {
+        document.getElementById('receiptView').classList.add('hidden');
+        document.getElementById('envelopeView').classList.remove('hidden');
+        window.location.hash = 'amplop';
+        setSkyEnvelopeOpen(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 650);
+    }
+
+    function handleReceiptSurfaceClick(event) {
+      if (event.target.closest('button') || event.target.closest('a')) return;
+      scanAndOpenEnvelope();
+    }
+
+    function backToReceiptView() {
+      document.getElementById('envelopeView').classList.add('hidden');
+      document.getElementById('receiptView').classList.remove('hidden');
+      if (window.location.hash === '#amplop') {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Membangun dekorasi langit romantis: bunga sakura jatuh, bintang berkelip & love bertaburan
+    function buildRomanticSkyDecorations() {
+      const layer = document.getElementById('skyDecorationsLayer');
+      if (!layer) return;
+
+      let html = '';
+
+      // 1. Bintang-bintang berkelip
+      for (let i = 0; i < 34; i++) {
+        const top = (i * 17 + 7) % 88;
+        const left = (i * 29 + 5) % 96;
+        const size = (i % 3) + 2;
+        const dur = (1.8 + (i % 5) * 0.45).toFixed(2) + 's';
+        const delay = ((i * 0.31) % 3).toFixed(2) + 's';
+        html += `<span class="twinkling-star" style="top:${top}%;left:${left}%;width:${size}px;height:${size}px;--star-dur:${dur};--star-delay:${delay};"></span>`;
+      }
+
+      // 2. Bunga sakura bertaburan jatuh
+      for (let i = 0; i < 20; i++) {
+        const left = (i * 11 + 3) % 95;
+        const size = 11 + (i % 4) * 3;
+        const dur = (7.5 + (i % 5) * 1.4).toFixed(2) + 's';
+        const delay = ((i * 0.65) % 8).toFixed(2) + 's';
+        const sway = (i % 2 === 0 ? 1 : -1) * (24 + (i % 3) * 12);
+        html += `<span class="sakura-petal" style="left:${left}%;--petal-size:${size}px;--fall-dur:${dur};--fall-delay:-${delay};--sway:${sway}px;"></span>`;
+      }
+
+      // 3. Love / hati bertaburan naik melayang
+      const hearts = ['♥', '💖', '💗', '💙'];
+      for (let i = 0; i < 14; i++) {
+        const left = (i * 13 + 8) % 92;
+        const size = 13 + (i % 3) * 4;
+        const dur = (7 + (i % 4) * 1.5).toFixed(2) + 's';
+        const delay = ((i * 0.8) % 7).toFixed(2) + 's';
+        const sway = (i % 2 === 0 ? -1 : 1) * (18 + (i % 3) * 10);
+        const symbol = hearts[i % hearts.length];
+        html += `<span class="floating-love" style="left:${left}%;--heart-size:${size}px;--heart-dur:${dur};--heart-delay:-${delay};--heart-sway:${sway}px;">${symbol}</span>`;
+      }
+
+      layer.innerHTML = html;
+    }
+
+    // Musik latar lembut opsional menggunakan Web Audio API
+    function playSoftTone(freq) {
+      if (!appState.audioCtx) return;
+      const now = appState.audioCtx.currentTime;
+      const osc = appState.audioCtx.createOscillator();
+      const gain = appState.audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.exponentialRampToValueAtTime(0.045, now + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.0008, now + 0.55);
+      osc.connect(gain);
+      gain.connect(appState.audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.58);
+    }
+
+    function toggleMusic() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!appState.audioCtx && AudioCtx) {
+          appState.audioCtx = new AudioCtx();
+        }
+        if (appState.audioCtx && appState.audioCtx.state === 'suspended') {
+          appState.audioCtx.resume();
+        }
+
+        appState.musicPlaying = !appState.musicPlaying;
+        const label = document.getElementById('musicLabel');
+        const icon = document.getElementById('musicIcon');
+
+        if (appState.musicPlaying) {
+          icon.textContent = '🎶';
+          label.textContent = 'Musik Aktif';
+          const notes = [523.25, 659.25, 783.99, 659.25, 587.33, 783.99, 659.25, 523.25];
+          clearInterval(appState.musicTimer);
+          appState.musicTimer = setInterval(() => {
+            if (!appState.musicPlaying) return;
+            playSoftTone(notes[appState.musicStep % notes.length]);
+            appState.musicStep += 1;
+          }, 520);
+          showToast('Musik lembut romantis dinyalakan 🎶');
+        } else {
+          icon.textContent = '🎵';
+          label.textContent = 'Musik Romantis';
+          clearInterval(appState.musicTimer);
+          showToast('Musik dijeda.');
+        }
+      } catch (err) {
+        console.error('Error audio:', err);
+      }
+    }
+
+    // Modal Edit Resi & Slide Foto
+    function openEditModal() {
+      document.getElementById('inputRecipientName').value = appState.receipt.recipientName;
+      document.getElementById('inputSenderName').value = appState.receipt.senderName;
+      document.getElementById('inputRecipientAddress').value = appState.receipt.recipientAddress;
+      document.getElementById('inputRecipientPhone').value = appState.receipt.recipientPhone;
+      document.getElementById('inputReceiptNote').value = appState.receipt.sweetNote;
+      document.getElementById('inputCustomUrl').value = appState.receipt.url;
+
+      const listEl = document.getElementById('slideEditorList');
+      listEl.innerHTML = appState.slides
+        .map(
+          (s, i) => `
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between text-xs font-extrabold text-slate-800">
+              <span>Slide ${i + 1} (${s.pandaLabel})</span>
+              <label class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sky-100 hover:bg-sky-200 text-sky-800 cursor-pointer font-bold">
+                <span>Upload Foto</span>
+                <input type="file" accept="image/*" class="hidden" onchange="handleSlidePhotoUpload(event, ${i})" />
+              </label>
+            </div>
+            <input
+              type="text"
+              id="editSlideTitle_${i}"
+              value="${s.title.replace(/"/g, '&quot;')}"
+              placeholder="Judul slide"
+              class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs font-bold"
+            />
+            <div class="flex items-center gap-2.5">
+              <img
+                id="editSlidePreview_${i}"
+                src="${s.photo.replace(/"/g, '&quot;')}"
+                alt="Pratinjau Slide ${i + 1}"
+                class="w-16 h-12 rounded-lg object-cover border border-slate-300 bg-white flex-shrink-0"
+              />
+              <input
+                type="text"
+                id="editSlidePhotoUrl_${i}"
+                value="${s.photo.startsWith('data:image/') ? '' : s.photo.replace(/"/g, '&quot;')}"
+                placeholder="Atau tempel link URL foto (https://...)"
+                oninput="handleSlidePhotoUrlInput(event, ${i})"
+                class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs"
+              />
+            </div>
+            <textarea
+              id="editSlideQuote_${i}"
+              rows="2"
+              placeholder="Kata-kata manis & semangat"
+              class="w-full px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs"
+            >${s.quote}</textarea>
+          </div>
+        `
+        )
+        .join('');
+
+      document.getElementById('editModal').classList.remove('hidden');
+    }
+
+    function closeEditModal() {
+      document.getElementById('editModal').classList.add('hidden');
+    }
+
+    function handleSlidePhotoUpload(event, slideIndex) {
+      const file = event.target.files && event.target.files[0];
+      if (!file || !appState.slides[slideIndex]) return;
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        if (e.target && typeof e.target.result === 'string') {
+          appState.slides[slideIndex].photo = e.target.result;
+          const previewEl = document.getElementById(`editSlidePreview_${slideIndex}`);
+          if (previewEl) previewEl.src = e.target.result;
+          const urlInputEl = document.getElementById(`editSlidePhotoUrl_${slideIndex}`);
+          if (urlInputEl) urlInputEl.value = '';
+          renderCurrentSlide();
+          showToast(`Foto Slide ${slideIndex + 1} berhasil diperbarui 📸`);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleSlidePhotoUrlInput(event, slideIndex) {
+      const urlVal = event.target.value.trim();
+      if (!appState.slides[slideIndex]) return;
+
+      if (urlVal) {
+        appState.slides[slideIndex].photo = urlVal;
+        const previewEl = document.getElementById(`editSlidePreview_${slideIndex}`);
+        if (previewEl) previewEl.src = urlVal;
+        renderCurrentSlide();
+      }
+    }
+
+    function saveEditsFromModal(event) {
+      event.preventDefault();
+      appState.receipt.recipientName = document.getElementById('inputRecipientName').value.trim() || 'ANDRIYANSAH PUTRA HANGGARA';
+      appState.receipt.senderName = document.getElementById('inputSenderName').value.trim() || 'SANG KEKASIH';
+      appState.receipt.recipientAddress = document.getElementById('inputRecipientAddress').value.trim() || 'KP.BOJONG';
+      appState.receipt.recipientPhone = document.getElementById('inputRecipientPhone').value.trim() || '-';
+      appState.receipt.sweetNote = document.getElementById('inputReceiptNote').value.trim();
+      appState.receipt.url = document.getElementById('inputCustomUrl').value.trim();
+
+      appState.slides.forEach((s, i) => {
+        const titleInput = document.getElementById(`editSlideTitle_${i}`);
+        const photoUrlInput = document.getElementById(`editSlidePhotoUrl_${i}`);
+        const quoteInput = document.getElementById(`editSlideQuote_${i}`);
+        if (titleInput && titleInput.value.trim()) s.title = titleInput.value.trim();
+        if (photoUrlInput && photoUrlInput.value.trim()) s.photo = photoUrlInput.value.trim();
+        if (quoteInput && quoteInput.value.trim()) s.quote = quoteInput.value.trim();
+        s.subNote = `Dari ${appState.receipt.senderName} • ${appState.receipt.recipientAddress}`;
+      });
+
+      renderReceiptUI();
+      renderCurrentSlide();
+      closeEditModal();
+      showToast('Perubahan resi J&T & slide foto berhasil disimpan 💙');
+    }
+
+    // Inisialisasi saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', () => {
+      buildRomanticSkyDecorations();
+      renderReceiptUI();
+      setSkyEnvelopeOpen(false);
+
+      if (window.location.hash === '#amplop') {
+        document.getElementById('receiptView').classList.add('hidden');
+        document.getElementById('envelopeView').classList.remove('hidden');
+        setSkyEnvelopeOpen(false);
+      }
+    });
+
+    // Pastikan semua fungsi handler global tersedia di window
+    Object.assign(window, {
+      scanAndOpenEnvelope,
+      handleReceiptSurfaceClick,
+      backToReceiptView,
+      toggleSkyEnvelope,
+      nextSlide,
+      prevSlide,
+      goToSlide,
+      toggleMusic,
+      openEditModal,
+      closeEditModal,
+      handleSlidePhotoUpload,
+      handleSlidePhotoUrlInput,
+      saveEditsFromModal
+    });
+  </script>
+</body>
+</html>
